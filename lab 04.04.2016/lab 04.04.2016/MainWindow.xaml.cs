@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using System.IO;
 using System.Windows.Shapes;
 
 namespace lab_04._04._2016
@@ -48,11 +50,12 @@ namespace lab_04._04._2016
             {
                 lbl_mesaj.Content = String.Empty;
                 textBox.Text = String.Empty;
+                txtContinutFisier.Text = String.Empty;
 
             }
         }
 
-       
+
 
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -82,6 +85,49 @@ namespace lab_04._04._2016
             else
             {
                 wnd1.Title = "nu se salveaza...";
+            }
+        }
+
+
+
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+            var mbr = MessageBox.Show("Salvam datele?", "Atentie", MessageBoxButton.OKCancel);
+            if (mbr == MessageBoxResult.OK)
+            {
+                wnd1.Title = "salvare date...";
+            }
+            else
+            {
+                wnd1.Title = "nu se salveaza...";
+            }
+
+        }
+
+        private void New_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+            var odf = new OpenFileDialog();
+            odf.Filter = "Fisiere text|*.txt|Fisiere XML|*.xml|Fisiere INI|*.ini";
+
+            if (odf.ShowDialog() == true)
+            {
+                //am selectat un fisier deja > stiu calea completa spre el
+                txtContinutFisier.Visibility = Visibility.Visible;
+
+                string caleCompletaFIsier = odf.FileName;
+
+                using (StreamReader sr = new StreamReader(caleCompletaFIsier))
+                {
+                
+                txtContinutFisier.Text = sr.ReadToEnd();
+
+
+                }
             }
         }
     }

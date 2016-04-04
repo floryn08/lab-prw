@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:lab_04._04._2016"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="561.842" Width="761.842">
     <Grid x:Name="wnd">
-        <Button x:Name="btn_afiseaza" Content="Afisare" HorizontalAlignment="Left" Margin="385,243,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.5,0.5" Click="btn_afiseaza_Click">
+        <Button x:Name="btn_afiseaza" Content="Afisare" HorizontalAlignment="Left" Margin="366,212,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.5,0.5" Click="btn_afiseaza_Click">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -17,9 +17,9 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <Label x:Name="lbl_mesaj" Content="" HorizontalAlignment="Left" Margin="66,37,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lbl_mesaj1" Content="" HorizontalAlignment="Left" Margin="275,37,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btn_sterge" Content="Sterge" HorizontalAlignment="Left" Margin="41,247,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.5,0.5" Click="btn_sterge_Click">
+        <Label x:Name="lbl_mesaj" Content="" HorizontalAlignment="Left" Margin="47,6,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbl_mesaj1" Content="" HorizontalAlignment="Left" Margin="256,6,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btn_sterge" Content="Sterge" HorizontalAlignment="Left" Margin="22,216,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.5,0.5" Click="btn_sterge_Click">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -29,14 +29,14 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="197,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <CheckBox x:Name="checkBox2" Content="Nu am citit nimic" HorizontalAlignment="Left" Margin="117,150,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="checkBox1" Content="Citit regulamentul" HorizontalAlignment="Left" Margin="317,150,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="r1" Content="Da" HorizontalAlignment="Left" Margin="29,199,0,0" VerticalAlignment="Top" GroupName="G1"/>
-        <RadioButton x:Name="r2" Content="Nu" HorizontalAlignment="Left" Margin="142,199,0,0" VerticalAlignment="Top" GroupName="G1"/>
-        <RadioButton x:Name="r3" Content="Poate" HorizontalAlignment="Left" Margin="257,199,0,0" VerticalAlignment="Top" GroupName="G2"/>
-        <RadioButton x:Name="r4" Content="Huh" HorizontalAlignment="Left" Margin="368,199,0,0" VerticalAlignment="Top" GroupName="G2"/>
-        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="197,260,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="comboBox_SelectionChanged">
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="178,201,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <CheckBox x:Name="checkBox2" Content="Nu am citit nimic" HorizontalAlignment="Left" Margin="98,119,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="checkBox1" Content="Citit regulamentul" HorizontalAlignment="Left" Margin="298,119,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="r1" Content="Da" HorizontalAlignment="Left" Margin="10,168,0,0" VerticalAlignment="Top" GroupName="G1"/>
+        <RadioButton x:Name="r2" Content="Nu" HorizontalAlignment="Left" Margin="123,168,0,0" VerticalAlignment="Top" GroupName="G1"/>
+        <RadioButton x:Name="r3" Content="Poate" HorizontalAlignment="Left" Margin="238,168,0,0" VerticalAlignment="Top" GroupName="G2"/>
+        <RadioButton x:Name="r4" Content="Huh" HorizontalAlignment="Left" Margin="349,168,0,0" VerticalAlignment="Top" GroupName="G2"/>
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="178,229,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="comboBox_SelectionChanged">
             <Button Content="text1"/>
             <Button Content="text2"/>
             <Button Content="text3"/>
@@ -46,7 +46,7 @@
             <CheckBox Content="chk1"/>
             <CheckBox Content="chk2"/>
         </ComboBox>
-        <Button x:Name="salveaza" Content="Salvare" HorizontalAlignment="Left" Margin="427,261,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.5,0.5" Click="button_Click">
+        <Button x:Name="salveaza" Content="Salvare" HorizontalAlignment="Left" Margin="408,230,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.5,0.5" Click="button_Click">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -56,6 +56,16 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
+        <DockPanel HorizontalAlignment="Left" Height="32" LastChildFill="False" VerticalAlignment="Top" Width="754">
+            <Menu x:Name="menu" Height="32" VerticalAlignment="Top" Width="100">
+                <MenuItem x:Name="menu1" ToolTip="Fisier" Header="Fisier">
+                    <MenuItem x:Name="New" Header="New"  Click="New_Click"/>
+                    <MenuItem x:Name="Add" Header="Add"  Click="Add_Click"/>
+                    <MenuItem x:Name="Save" Header="Save"  Click="Save_Click"/>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+        <TextBox x:Name="txtContinutFisier" HorizontalAlignment="Left" Height="150" Margin="232,276,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="263" Visibility="Hidden"/>
 
     </Grid>
 </Window>
