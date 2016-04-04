@@ -92,6 +92,19 @@ namespace lab_04._04._2016
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
+
+            //save file dialog si sa fie salvat
+
+            var sfd = new SaveFileDialog();
+
+            if (sfd.ShowDialog()==true)
+            {
+                using (StreamWriter sw = new StreamWriter("output.txt"));
+                {
+                    //TODO: write to a txt file
+                }
+            }
+
             var mbr = MessageBox.Show("Salvam datele?", "Atentie", MessageBoxButton.OKCancel);
             if (mbr == MessageBoxResult.OK)
             {
@@ -113,6 +126,7 @@ namespace lab_04._04._2016
         {
             var odf = new OpenFileDialog();
             odf.Filter = "Fisiere text|*.txt|Fisiere XML|*.xml|Fisiere INI|*.ini";
+            odf.InitialDirectory = System.IO.Path.GetFullPath(".");
 
             if (odf.ShowDialog() == true)
             {
