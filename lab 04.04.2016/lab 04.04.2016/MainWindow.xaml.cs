@@ -22,6 +22,7 @@ namespace lab_04._04._2016
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
@@ -97,9 +98,9 @@ namespace lab_04._04._2016
 
             var sfd = new SaveFileDialog();
 
-            if (sfd.ShowDialog()==true)
+            if (sfd.ShowDialog() == true)
             {
-                using (StreamWriter sw = new StreamWriter("output.txt"));
+                using (StreamWriter sw = new StreamWriter("output.txt")) ;
                 {
                     //TODO: write to a txt file
                 }
@@ -137,12 +138,37 @@ namespace lab_04._04._2016
 
                 using (StreamReader sr = new StreamReader(caleCompletaFIsier))
                 {
-                
-                txtContinutFisier.Text = sr.ReadToEnd();
+
+                    txtContinutFisier.Text = sr.ReadToEnd();
 
 
                 }
             }
+        }
+
+        private void button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Fereastra2 f2 = new Fereastra2();
+
+            //f2.Show();
+            f2.ShowDialog();
+
+            txtChk.Text = f2.Adevarat.ToString();
+            txtData.Text = f2.DataNastere.ToString();
+
+            if (f2.comboBox.SelectedValue is Button)
+            {
+                txtComboBtn.Text = txtComboBtn.Text + "Butonul a fost apasat";
+
+            }
+
+            if (f2.comboBox.SelectedValue is CheckBox)
+            {
+                //  lbl_mesaj.Content += "Am slectat din combobox: " + (comboBox.SelectedValue as CheckBox).IsChecked + (comboBox.SelectedValue as CheckBox).Content;
+
+                txtComboChk.Text += (f2.comboBox.SelectedValue as CheckBox).IsChecked.ToString();
+            }
+
         }
     }
 }

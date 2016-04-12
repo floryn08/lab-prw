@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:lab_04._04._2016"
         xmlns:Properties="clr-namespace:lab_04._04._2016.Properties" x:Name="wnd1" x:Class="lab_04._04._2016.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="720.408" Width="761.842">
+        Title="MainWindow" Height="720.408" Width="1200.963">
     <Grid x:Name="wnd">
 
         <Button x:Name="btn_afiseaza" Content="Afisare" HorizontalAlignment="Left" Margin="366,212,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.5,0.5" Click="btn_afiseaza_Click">
@@ -99,7 +99,17 @@
 
 
         </StackPanel>
-      
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="562,115,0,0" VerticalAlignment="Top" Width="75" Click="button_Click_1"/>
+        <Label x:Name="label" Content="Data: " HorizontalAlignment="Left" Margin="806,183,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1" Content="Checked?" HorizontalAlignment="Left" Margin="806,209,0,0" VerticalAlignment="Top"/>
+        <ScrollViewer HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100"/>
+        <TextBox x:Name="txtData" HorizontalAlignment="Left" Height="23" Margin="871,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtChk" HorizontalAlignment="Left" Height="23" Margin="872,212,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="label2" Content="Acceptat?" HorizontalAlignment="Left" Margin="805,240,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label2_Copy" Content="Pressed Button?" HorizontalAlignment="Left" Margin="772,271,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtComboBtn" HorizontalAlignment="Left" Height="23" Margin="872,271,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtComboChk" HorizontalAlignment="Left" Height="23" Margin="872,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
 
     </Grid>
 </Window>
