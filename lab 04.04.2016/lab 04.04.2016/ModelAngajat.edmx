@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AngajatiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Angajat">
+          <Key>
+            <PropertyRef Name="Marca" />
+          </Key>
+          <Property Name="Marca" Type="int" Nullable="false" />
+          <Property Name="Nume" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Salariu" Type="int" />
+          <Property Name="CodDep" Type="int" />
+          <Property Name="DataAngajare" Type="date" />
+        </EntityType>
+        <EntityType Name="Departament">
+          <Key>
+            <PropertyRef Name="CodDep" />
+          </Key>
+          <Property Name="CodDep" Type="int" Nullable="false" />
+          <Property Name="Denumire" Type="varchar" MaxLength="50" />
+          <Property Name="Locatie" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Angajat_ToDepartament">
+          <End Role="Departament" Type="Self.Departament" Multiplicity="0..1" />
+          <End Role="Angajat" Type="Self.Angajat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departament">
+              <PropertyRef Name="CodDep" />
+            </Principal>
+            <Dependent Role="Angajat">
+              <PropertyRef Name="CodDep" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AngajatiModelStoreContainer">
+          <EntitySet Name="Angajat" EntityType="Self.Angajat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Departament" EntityType="Self.Departament" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Angajat_ToDepartament" Association="Self.FK_Angajat_ToDepartament">
+            <End Role="Departament" EntitySet="Departament" />
+            <End Role="Angajat" EntitySet="Angajat" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AngajatiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Angajat">
+          <Key>
+            <PropertyRef Name="Marca" />
+          </Key>
+          <Property Name="Marca" Type="Int32" Nullable="false" />
+          <Property Name="Nume" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Salariu" Type="Int32" />
+          <Property Name="CodDep" Type="Int32" />
+          <Property Name="DataAngajare" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Departament" Relationship="Self.FK_Angajat_ToDepartament" FromRole="Angajat" ToRole="Departament" />
+        </EntityType>
+        <EntityType Name="Departament">
+          <Key>
+            <PropertyRef Name="CodDep" />
+          </Key>
+          <Property Name="CodDep" Type="Int32" Nullable="false" />
+          <Property Name="Denumire" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Locatie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Angajats" Relationship="Self.FK_Angajat_ToDepartament" FromRole="Departament" ToRole="Angajat" />
+        </EntityType>
+        <Association Name="FK_Angajat_ToDepartament">
+          <End Role="Departament" Type="Self.Departament" Multiplicity="0..1" />
+          <End Role="Angajat" Type="Self.Angajat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departament">
+              <PropertyRef Name="CodDep" />
+            </Principal>
+            <Dependent Role="Angajat">
+              <PropertyRef Name="CodDep" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Database1Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Angajats" EntityType="Self.Angajat" />
+          <EntitySet Name="Departaments" EntityType="Self.Departament" />
+          <AssociationSet Name="FK_Angajat_ToDepartament" Association="Self.FK_Angajat_ToDepartament">
+            <End Role="Departament" EntitySet="Departaments" />
+            <End Role="Angajat" EntitySet="Angajats" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AngajatiModelStoreContainer" CdmEntityContainer="Database1Entities">
+          <EntitySetMapping Name="Angajats">
+            <EntityTypeMapping TypeName="AngajatiModel.Angajat">
+              <MappingFragment StoreEntitySet="Angajat">
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Salariu" ColumnName="Salariu" />
+                <ScalarProperty Name="CodDep" ColumnName="CodDep" />
+                <ScalarProperty Name="DataAngajare" ColumnName="DataAngajare" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departaments">
+            <EntityTypeMapping TypeName="AngajatiModel.Departament">
+              <MappingFragment StoreEntitySet="Departament">
+                <ScalarProperty Name="CodDep" ColumnName="CodDep" />
+                <ScalarProperty Name="Denumire" ColumnName="Denumire" />
+                <ScalarProperty Name="Locatie" ColumnName="Locatie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
