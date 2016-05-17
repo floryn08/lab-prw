@@ -62,13 +62,7 @@ namespace lab_04._04._2016
 
         //    }
         //}
-
-
-
-
-
-
-
+        
         private void button_Click(object sender, RoutedEventArgs e)
         {
             wnd2.Close();
